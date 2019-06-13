@@ -11,12 +11,16 @@
             $email = $this->request->getPost('email');
             $pass = $this->request->getPost('pass');
             $pass = md5($pass);
-            /*if($user_exist = Users::findFirst($email, $pass)){
-                /// ok
+            $user_exist = Users::find([
+                "email = '$email'",
+                "pass = '$pass'"
+            ]);
+            if(count($user_exist) !== 0){
+                echo "Profile";
             }
             else{
                 echo 'User not exist';
-            }*/
+            }
         }
     }
 

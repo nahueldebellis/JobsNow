@@ -35,11 +35,26 @@
         }
 
         public function companyAction(){
-
+            $this->view->disable();
+            $company_data = [
+                'nif' => 'text',
+                'area' => 'text',
+            ];
+            
+            $this->response->setContentType('application/json', 'UTF-8');
+            $this->response->setContent(json_encode($company_data));
         }
 
         public function employeeAction(){
-                        
+            $this->view->disable();
+            $employee_data = [
+                'cv' => 'file',
+                'education' => 'text',
+                'experience'=> 'text',
+            ];
+
+            $this->response->setContentType('application/json');
+            $this->response->setContent(json_encode($employee_data));
         }
 
         private function createEmployee($user_id){
