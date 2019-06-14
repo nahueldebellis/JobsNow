@@ -3,8 +3,8 @@
 
     class Postulations extends Model{
         public $id;
-        public $id_job;
-        public $id_empresa;
-        public $id_empleado;
+        public $job_id;
+        public $company_id;
+        public $employee_id;
     }
 ?>

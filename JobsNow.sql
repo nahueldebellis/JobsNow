@@ -22,41 +22,41 @@ CREATE TABLE Job(
 
 CREATE TABLE Employee(
 	id int not null auto_increment,
-    id_user int,
+    user_id int,
     experience text,
     education text,
     cv longblob,
     primary key(id),
-	foreign key Employee(id_user) REFERENCES Users(id)
+	foreign key Employee(user_id) REFERENCES Users(id)
 );
 
 CREATE TABLE Company(
-	id int not null AUTO_INCREMENT,
-    id_user int,
+    id int not null AUTO_INCREMENT,
+    user_id int,
     nif int,
     area varchar(50),
     PRIMARY KEY (id),
-    FOREIGN KEY Company(id_user) REFERENCES Users(id)    
+    FOREIGN KEY Company(user_id) REFERENCES Users(id)    
 );
 
 CREATE TABLE Administrator(
 	id int not null auto_increment,
-    id_user int,
-    id_company int,
+    user_id int,
+    company_id int,
     position varchar(100),
     up_date date,
     primary key (id),
-    FOREIGN KEY (id_user) REFERENCES Users(id),
-    FOREIGN KEY (id_company) REFERENCES Company(id) 
+    FOREIGN KEY (user_id) REFERENCES Users(id),
+    FOREIGN KEY (company_id) REFERENCES Company(id) 
 );
 
 CREATE TABLE Postulations(
 	id int not null AUTO_INCREMENT,
-    id_job int,
-    id_employee int,
-    id_company int,
+    job_id int,
+    employee_id int,
+    company_id int,
     PRIMARY KEY (id),
-    FOREIGN KEY (id_job) REFERENCES Job(id),
-    FOREIGN KEY (id_employee) REFERENCES Employee(id),
-    FOREIGN KEY (id_company) REFERENCES Company(id)
+    FOREIGN KEY (job_id) REFERENCES Job(id),
+    FOREIGN KEY (employee_id) REFERENCES Employee(id),
+    FOREIGN KEY (company_id) REFERENCES Company(id)
 );

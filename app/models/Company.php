@@ -3,7 +3,7 @@
 
     class Company extends Model{
         public $id;
-        public $id_user;
+        public $user_id;
         public $nif;
         public $area;
     }

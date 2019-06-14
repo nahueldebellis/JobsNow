@@ -21,16 +21,18 @@
             $user->phone = $this->request->getPost('phone');
             $user->address = $this->request->getPost('address');
             $user->rotulo = $this->request->getPost('rotulo');
-            $user->profile_photo = $this->request->getPost('profile_photo');
+            $user->profile_photo = base64_encode(file_get_contents($this->request->getUploadedFiles()[0]->getTempName()));
+        
 
             $success = $user->save();
-
-            $this->success_status($success, 'Users');   
+            $user->refresh();
             if($user_type == "Employee")
-                $this->dispatcher();  
-//                $this->createEmployee($user->id);
+                $this->createEmployee($user->id);
             else if($user_type == "Company")
                 $this->createCompany($user->id);
+
+            $this->success_status($success, 'Users');  
+             
                 
         }
 
@@ -40,9 +42,9 @@
                 'nif' => 'text',
                 'area' => 'text',
             ];
-            
+
             $this->response->setContentType('application/json', 'UTF-8');
-            $this->response->setContent(json_encode($company_data));
+            echo json_encode($company_data);
         }
 
         public function employeeAction(){
@@ -53,18 +55,18 @@
                 'experience'=> 'text',
             ];
 
-            $this->response->setContentType('application/json');
-            $this->response->setContent(json_encode($employee_data));
+            $this->response->setContentType('application/json', 'UTF-8');
+            echo json_encode($employee_data);
         }
 
         private function createEmployee($user_id){
-
+            echo($user_id);
             $employee = new Employee();
             
             $employee->user_id = $user_id;
-            $employee->nif = $this->request->getPost('experience');
-            $employee->area = $this->request->getPost('education');
-            $employee->cv = $this->request->getPost('cv');
+            $employee->experience = $this->request->getPost('experience');
+            $employee->education = $this->request->getPost('education');
+            $employee->cv = base64_encode(file_get_contents($this->request->getUploadedFiles()[1]->getTempName()));
 
             $success = $employee->save();
             $this->success_status($success, 'employee');

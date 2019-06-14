@@ -3,8 +3,8 @@
 
     class Admin extends Model{
         public $id;
-        public $id_user;
-        public $id_company;
+        public $user_id;
+        public $company_id;
         public $position;
         public $up_date;
     }

@@ -1,0 +1,12 @@
+<h1> <?php echo $info['name']; ?> </h1>
+<p>
+     <?php echo $info['email']; ?> 
+     <?php echo $info['phone']; ?>
+     <?php echo $info['address']; ?>
+     <?php echo $info['rotulo']; ?>
+     <img src="<?php echo $info['profile_photo']; ?>" alt="">
+     <img src="<?php echo 'data:image/png;base64,'.base64_encode( $info['profile_photo'] ); ?>" />
+
+</p>
+
+

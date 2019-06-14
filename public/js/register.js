@@ -1,7 +1,7 @@
 const type = document.getElementById('type');
 function renderOptions(url){
     fetch(url)
-    .then( response => response)
+    .then( response => response.json() )
     .then( options  => console.table(options));
 }
 

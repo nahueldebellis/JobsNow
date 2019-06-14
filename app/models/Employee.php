@@ -3,7 +3,7 @@
 
     class Employee extends Model{
         public $id;
-        public $id_user;
+        public $user_id;
         public $experience;
         public $education;
         public $cv;
