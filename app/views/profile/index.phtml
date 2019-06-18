@@ -1,12 +1,13 @@
 <h1> <?php echo $info['name']; ?> </h1>
 <p>
-     <?php echo $info['email']; ?> 
-     <?php echo $info['phone']; ?>
-     <?php echo $info['address']; ?>
-     <?php echo $info['rotulo']; ?>
-     <img src="<?php echo $info['profile_photo']; ?>" alt="">
-     <img src="<?php echo 'data:image/png;base64,'.base64_encode( $info['profile_photo'] ); ?>" />
-
+     <?php
+          foreach ($info as $campo => $value) {
+               if($campo != "profile_photo")
+                    echo "$campo -> $value ";          
+          } 
+     ?>
+     
+     <img class="img-responsive center-block" 
+		src="data:image/jpeg;base64,<?php echo $info['profile_photo']?>">
+     <div id='aditional'></div>
 </p>
-
-
