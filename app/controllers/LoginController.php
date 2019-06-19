@@ -6,7 +6,6 @@
             
         }
 
-
         public function loginAction(){
             $email = $this->request->getPost('email');
             $pass = $this->request->getPost('pass');
@@ -15,7 +14,10 @@
                 "email = '$email' AND pass = '$pass'"
             ]);
             if(count($user_exist) != 0){
-                echo "Profile";
+                $user_info = $user_exist[0];
+                $this->session->set("register", "$user_info->id");
+                $this->response->redirect('profile');
+                $this->view->disable();
             }
             else{
                 echo 'User not exist';

@@ -16,6 +16,7 @@
             $user = new Users();
             
             $user->name = $this->request->getPost('name');
+            $user->type = $user_type;
             $user->pass = $pass;
             $user->email = $this->request->getPost('email');
             $user->phone = $this->request->getPost('phone');
