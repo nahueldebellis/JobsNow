@@ -14,10 +14,14 @@ CREATE TABLE Job(
 	id int not null AUTO_INCREMENT,
     position varchar (50),
     description text,
+    company_id int,
     salary float,
-    requeriments text,
+    requirements text,
+    employee_id id,
     state varchar (30),
-    PRIMARY KEY (id)
+    PRIMARY KEY (id),
+    FOREIGN KEY (company_id) REFERENCES Company(id),
+    FOREIGN KEY (employee_id) REFERENCES Employee(id)
 );
 
 CREATE TABLE Employee(
@@ -54,9 +58,7 @@ CREATE TABLE Postulations(
 	id int not null AUTO_INCREMENT,
     job_id int,
     employee_id int,
-    company_id int,
     PRIMARY KEY (id),
     FOREIGN KEY (job_id) REFERENCES Job(id),
-    FOREIGN KEY (employee_id) REFERENCES Employee(id),
-    FOREIGN KEY (company_id) REFERENCES Company(id)
+    FOREIGN KEY (employee_id) REFERENCES Employee(id)
 );

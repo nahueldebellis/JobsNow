@@ -3,7 +3,10 @@
 
     class LoginController extends Controller{
         public function indexAction(){
-            
+            if($this->session->has("register")){
+                $this->view->disable();
+                $this->response->redirect('profile');
+            }
         }
 
         public function loginAction(){

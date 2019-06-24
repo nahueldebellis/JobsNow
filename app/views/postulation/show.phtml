@@ -1,0 +1,11 @@
+<?php
+
+    foreach($postulation as $postulants){
+        foreach($postulants as $key => $value){
+            if($key != "profile_photo")
+                echo "$key -> $value ";
+        }
+        echo "<br>";
+    }
+
+?>

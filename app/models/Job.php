@@ -6,7 +6,8 @@
         public $position;
         public $description;
         public $salary;
-        public $requeriments;
-        public $state;
+        public $company_id;
+        public $employee_id;
+        public $requirements;
     }
 ?>
