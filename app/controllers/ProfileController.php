@@ -10,7 +10,17 @@
                 $this->response->redirect('login');
                 return;
             }
+            $info = $this->getProfileData($user_id);
+            $this->view->info = $info;
+        }
 
+        public function generalAction(){
+            $user_id = $this->request->getQuery('id');
+            $info = $this->getProfileData($user_id);
+            $this->view->info = $info;
+        }
+
+        private function getProfileData($user_id=0){
             $user_info = Users::findFirst([
                 "id = $user_id" 
             ]);
@@ -32,9 +42,10 @@
             ];
             foreach($aditional_info as $campo => $value)
                 $info[$campo] = $value;
-            $this->view->info = $info;
             
+            return $info;
         }
+
 
         public function closeAction(){
             $this->session->destroy();
