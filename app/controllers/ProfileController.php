@@ -3,6 +3,13 @@
 
     class ProfileController extends Controller{
         public function indexAction(){
+            $user_id = $this->checkRegister();
+            $info = $this->getProfileData($user_id);
+            $this->view->edit_data = "/JobsNow/profile/update";
+            $this->view->info = $info;
+        }
+
+        private function checkRegister(){
             if($this->session->has("register"))
                 $user_id = $this->session->get('register');
             else{
@@ -10,14 +17,69 @@
                 $this->response->redirect('login');
                 return;
             }
-            $info = $this->getProfileData($user_id);
-            $this->view->info = $info;
+            return $user_id;
         }
+
 
         public function generalAction(){
             $user_id = $this->request->getQuery('id');
             $info = $this->getProfileData($user_id);
             $this->view->info = $info;
+        }
+
+        public function updateAction(){
+            $user_id = $this->checkRegister();
+            $user = Users::findFirstById($user_id);
+            $type = $user->type;
+            if($type == "Employee")
+                $aditional_info = ['cv' => 'file', 'experience' => 'text', 'education' => 'text'];
+            elseif($type == "Company")
+                $aditional_info = ['nif' => 'text', 'area' => 'text'];
+            
+            $this->view->aditional_info = $aditional_info;
+        }
+
+
+        public function editAction(){
+            $user_id = $this->checkRegister();
+            $employee = ['cv', 'experience', 'education'];
+            $company = ['nif', 'area'];
+            $user = ['name', 'email', 'phone', 'address', 'rotulo', 'profile_photo'];
+
+            $req = $this->request->getPost();//getRawBody(): 
+
+            foreach($req as $edit_type => $edit_data){
+                if($edit_data != Null || $edit_data != ''){
+                    if($edit_type == 'pass'){
+                        $edit_data = md5($edit_data);
+                        $this->updateUser($user_id, $edit_type, $edit_data);
+                    }
+                    elseif(in_array($edit_type, $user))
+                        $this->updateUser($user_id, $edit_type, $edit_data);
+                    elseif(in_array($edit_type, $employee))
+                        $this->updateEmployee($user_id, $edit_type, $edit_data);
+                    elseif(in_array($edit_type, $company))
+                        $this->updateCompany($user_id, $edit_type, $edit_data);
+                }
+            }
+        }
+        
+        private function updateCompany($user_id, $company_edit, $edit_data){
+            $company = Company::findFirst("user_id=$user_id");
+            $company->$company_edit = $edit_data;
+            $company->update();
+        }
+
+        private function updateEmployee($user_id, $employee_edit, $edit_data){
+            $employee = Employee::findFirst("user_id=$user_id");
+            $employee->$employee_edit = $edit_data;
+            $employee->update();
+        }
+
+        private function updateUser($user_id, $user_edit, $edit_data){
+            $user = Users::findFirstById($user_id);
+            $user->$user_edit = $edit_data;
+            $user->update();
         }
 
         private function getProfileData($user_id=0){
@@ -45,7 +107,6 @@
             
             return $info;
         }
-
 
         public function closeAction(){
             $this->session->destroy();

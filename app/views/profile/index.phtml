@@ -1,8 +1,12 @@
 <h1> <?php echo $info['name']; ?> </h1>
+
 <img class="img-responsive center-block" 
      src="data:image/jpeg;base64,<?php echo $info['profile_photo']?>">
 <p>
      <?php
+          if(isset($edit_data)){
+               echo "<a href=$edit_data>Update Data</a><br>";
+          }
           foreach ($info as $campo => $value) {
                if(($campo != "profile_photo") && ($campo != "cv")){
                     echo "$campo -> $value<br>";
