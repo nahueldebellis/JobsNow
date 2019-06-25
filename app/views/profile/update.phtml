@@ -1,0 +1,15 @@
+<form action='/JobsNow/profile/edit', method='POST'>
+    <input type="text" name = "name" placeholder = "name"><br>
+    <input type="password" name = "pass" placeholder = "password"><br>
+    <input type="email" name="email" placeholder = "email"><br>
+    <input type="text" name="phone" placeholder = "phone"><br>
+    <input type="text" name="address" placeholder = "address"><br>
+    <input type="text" name="rotulo" placeholder = "rotulongo"><br>
+    <label for="">Profile photo: </label>
+    <input type="file" name="profile_photo"><br>
+    <?php 
+        foreach($aditional_info as $input_name => $input_type)
+            echo "<input type='$input_type' name='$input_name' placeholder='$input_name'><br>";
+    ?>
+    <input type="submit" value="Update">
+</form>

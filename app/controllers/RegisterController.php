@@ -61,7 +61,7 @@
         }
 
         private function createEmployee($user_id){
-            echo($user_id);
+            echo "$user_id ";
             $employee = new Employee();
             
             $employee->user_id = $user_id;
