@@ -4,11 +4,11 @@
     <input type="email" name="email" placeholder = "email"><br>
     <input type="text" name="phone" placeholder = "phone"><br>
     <input type="text" name="address" placeholder = "address"><br>
-    <input type="text" name="rotulo" placeholder = "rotulongo"><br>
+    <input type="text" name="rotulo" placeholder = "rotulo"><br>
     <label for="">Profile photo: </label>
     <input type="file" name="profile_photo"><br>
     <select name='type' id='type'>
-        <option value="Seleccione chorongo"></option>
+        <option value="Seleccione chorongo">Select user type</option>
         <option value='Employee'> Employee</option>
         <option value='Company'> Company</option>
     </select><br>
@@ -29,13 +29,14 @@ function renderOptions(url){
             let input = document.createElement('input', name);
             let cut = document.createElement('br');
             input.name = name;
+            input.placeholder = name;
             input.type = options[name];
             extra.insertBefore(input, undefined);
             extra.insertBefore(cut, undefined);
         }
         let send_form = document.createElement('input');
         send_form.type = 'submit';
-        send_form.value = "porque en espadol";
+        send_form.value = "Register";
         extra.insertBefore(send_form, undefined);
     });
 }
