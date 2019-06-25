@@ -13,7 +13,7 @@
             $pass = $this->request->getPost('pass');
             $pass = md5($pass);
 
-            $user = new Users();
+            $user = new Users(); 
             
             $user->name = $this->request->getPost('name');
             $user->type = $user_type;
