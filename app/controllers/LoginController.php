@@ -2,6 +2,10 @@
     use Phalcon\Mvc\Controller;
 
     class LoginController extends Controller{
+        public function initialize(){
+            
+        }
+        
         public function indexAction(){
             if($this->session->has("register")){
                 $this->view->disable();

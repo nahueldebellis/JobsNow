@@ -1,24 +1,29 @@
 <?php
+    $this->assets->outputCss();
     function showOffers($offer, $apply='', $url="/JobsNow/postulation/apply/"){
         if(isset($offer)){
+            echo "<div class='row'>";
             foreach($offer as $off){ ?>
-                <br>
-                <form action=<?php echo $url ?> method='POST'>
+                <form class="border form-group col-sm-2"  action=<?php echo $url ?> method='POST'>
                     <?php
                         foreach($off as $campo => $value){
-                            if($campo == 'requirements' || $campo == 'description')
-                                echo "<br><textarea> $value </textarea> <br><br>";
-                            else if($campo != "id")
-                                echo "<input name=$campo value='$value' readonly> <br>";
+                            if($campo == 'requirements' || $campo == 'description'){
+                                echo "<label id='campo'>$campo:</label> ";
+                                echo "<label id='value'> $value </label><br>";
+                            }
+                            else if($campo != "id"){
+                                echo "<label id='campo'>$campo:</label> ";
+                                echo "<label id='value'> $value </label><br>";
+                            }
                             else
-                                echo "<input type='hidden' name=$campo value='$value' readonly> <br>";
+                                echo "<input type='hidden' name=$campo value='$value' readonly>";
                         }
                         echo $apply;
-                        echo "<br><br>";
                     ?>
                 </form>
                 <?php
             }
+            echo "</div>";
         }
     }
 
@@ -39,7 +44,7 @@
         showOffers($offer, $apply, $url);
     }
     else{
-        $apply = "<input type='submit' value='Apply'>";
+        $apply = "<input class='btn btn-primary' type='submit' value='Apply'>";
         showOffers($offer, $apply);
     }
     

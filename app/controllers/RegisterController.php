@@ -2,8 +2,11 @@
     use Phalcon\Mvc\Controller;
 
     class RegisterController extends Controller{
+        public function initialize(){
+            
+        }
         public function indexAction(){
-
+            $this->assets->addJs('js/register.js');
         }
 
         public function registerAction(){
@@ -34,7 +37,6 @@
 
             $this->success_status($success, 'Users');  
              
-                
         }
 
         public function companyAction(){

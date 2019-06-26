@@ -1,6 +1,11 @@
 <?php 
     use Phalcon\Mvc\Controller;
         class PostulationController extends Controller{
+            public function initialize(){
+                $this->assets->addCss('css/main_template.css');
+                $this->view->setTemplateBefore('main_template');
+            }
+
             public function indexAction(){
                 if($this->session->has("register"))
                     $user_id = $this->session->get("register");
@@ -8,6 +13,7 @@
                     $this->response->redirect('login');
                     return;
                 }
+                $this->assets->addCss('css/postulation.css');
 
                 $user_info = Users::findFirst(["id=$user_id"]);
                 $type = $user_info->type;

@@ -2,6 +2,11 @@
     use Phalcon\Mvc\Controller;
 
     class ProfileController extends Controller{
+        public function initialize(){
+            $this->assets->addCss('css/main_template.css');
+            $this->view->setTemplateBefore('main_template');
+        }
+
         public function indexAction(){
             $user_id = $this->checkRegister();
             $info = $this->getProfileData($user_id);
