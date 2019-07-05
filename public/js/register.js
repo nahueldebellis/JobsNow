@@ -13,12 +13,14 @@ function renderOptions(url){
             input.name = name;
             input.placeholder = name;
             input.type = options[name];
+            input.className =  options[name] !== "file" ? "form-control" : "form-control-file";
             extra.insertBefore(input, undefined);
             extra.insertBefore(cut, undefined);
         }
         let send_form = document.createElement('input');
         send_form.type = 'submit';
         send_form.value = "Register";
+        send_form.className = "btn btn-primary";
         extra.insertBefore(send_form, undefined);
     });
 }

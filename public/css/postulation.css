@@ -1,9 +1,16 @@
+body{
+    font-family: 'Roboto';
+}
+.company-name{
+    text-transform: capitalize;
+}
+
 form{
     margin:1%;
     padding-left:1%; 
-    padding-bottom:1%; 
+    padding-top:2%; 
     background-color:#f8f9fa;
-    padding-bottom: 4%;
+    padding-bottom: 2%;
 }
 
 #campo{
@@ -12,14 +19,21 @@ form{
     color: #2c3e50 ;
 }
 
+input[type=submit]{
+    background-color: #46669c;
+    border:none;    
+}
+
 input[type=submit]:hover{
     background-color: #46669c;
 }
 
-input[type=submit]{
+.job_button{
     background-color: #46669c;
     border: none;
-    position:absolute;
-    bottom: 0;
-    margin: 4% 50% 4% 25%;
+    width:100%;
+}
+.ofertas{
+    font-weight: 100;
+    display:inline;
 }

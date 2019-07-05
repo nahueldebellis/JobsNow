@@ -1,0 +1,129 @@
+button {
+    color: beige;
+    background: none; 
+    margin-right: 5px;
+}
+
+.logo{
+    margin-left: 10px;
+}
+nav{
+    border: none;
+    background-color: #1B2126;
+    
+}
+body{
+    background-color: #161D2A;
+}
+
+.description{
+    font-family: 'Roboto', sans-serif;
+    font-style: italic;
+    margin-top:5%;
+    color:white;
+}
+
+.experience{
+    position: relative;
+    left:10%;
+    width:90%;
+    background-color: #46669C;
+    /*height: 210px; putooooo*/
+    margin-top: 5%; 
+    margin-bottom: 5%;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+.animacion{
+    animation-duration: 3s;
+    animation-name: fadein;
+    margin-top:5% ;
+    
+}
+
+.animacion:hover{
+    filter: contrast(100%) brightness(1);
+    transition: 1s;
+    filter: saturate(0%)   brightness(1.4);
+  
+    
+}
+
+
+q{
+    font-size: 20px;
+    font-style: italic;
+
+}
+
+.usersp{  
+    margin-top:20px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 30px;
+    color: black;
+    font-weight: 100;
+    
+}
+
+
+
+@keyframes brighten {
+    from{
+        filter: contrast(100%) brightness(1);
+    }
+    to {
+        filter: contrast(50%) brightness(2);
+    }
+}
+
+
+
+@keyframes fadein {
+    from {
+      opacity: 0;
+    }
+  
+    to {      
+      opacity: 100%;
+    }
+}
+footer h1, ul{
+    margin:0;
+}
+
+footer ul li{
+    list-style-type: none;
+}
+
+footer{
+    position: relative;
+    background-color:/*#5E7184;#4B5C78;*/#B7C7DE;
+}
+.footerimg{
+    height: 35%;
+    width: 35%;
+}
+.unlam{
+    height: 100%;
+    width: 35%;
+} 
+
+footer div h2{
+    margin-top: 5%;
+   
+}
+
+footer div p{
+    font-size: 15px;
+}
+
+.jobsnow{
+    height: 70%;
+    margin-top: 3%;
+}
+
+.end{
+    padding-bottom:2%;
+}
+

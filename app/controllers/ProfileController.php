@@ -10,6 +10,8 @@
         public function indexAction(){
             $user_id = $this->checkRegister();
             $info = $this->getProfileData($user_id);
+
+            $this->assets->addCss('css/profile.css');
             $this->view->edit_data = "/JobsNow/profile/update";
             $this->view->info = $info;
         }
@@ -27,6 +29,7 @@
 
 
         public function generalAction(){
+            $this->assets->addCss("css/profile.css");
             $user_id = $this->request->getQuery('id');
             $info = $this->getProfileData($user_id);
             $this->view->info = $info;
@@ -34,13 +37,21 @@
 
         public function updateAction(){
             $user_id = $this->checkRegister();
-            $user = Users::findFirstById($user_id);
-            $type = $user->type;
-            if($type == "Employee")
-                $aditional_info = ['cv' => 'file', 'experience' => 'text', 'education' => 'text'];
-            elseif($type == "Company")
-                $aditional_info = ['nif' => 'text', 'area' => 'text'];
+            $this->assets->addCss('css/profile_update.css');
             
+            $user = Users::findFirst([
+                "columns" => ["name", "type", "email", "rotulo", "address", "phone"],
+                "id=$user_id"   
+            ]);
+
+            $type = $user->type;
+
+            if($type == "Employee")
+                $aditional_info = ['cv' => 'file', 'experience' => 'text', 'education' => 'text']; ///ta mal, ta hardcodeado
+            elseif($type == "Company")
+                $aditional_info = ['nif' => 'text', 'area' => 'text']; /// ta mal, ta hardcodeado
+            
+            $this->view->user_info = $user;
             $this->view->aditional_info = $aditional_info;
         }
 
@@ -67,6 +78,8 @@
                         $this->updateCompany($user_id, $edit_type, $edit_data);
                 }
             }
+
+            $this->response->redirect('profile');
         }
         
         private function updateCompany($user_id, $company_edit, $edit_data){

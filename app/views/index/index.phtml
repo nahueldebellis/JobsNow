@@ -1,2 +1,78 @@
-<button onclick="window.location = '/JobsNow/login'">Logineate!!!</button>
-<button onclick="window.location = '/JobsNow/register'">Registrate!!!</button>
+<?php $this->assets->outputCss(); ?> 
+<nav class="navbar   sticky-top">
+    <img class="img-fluid " alt="Responsive image" height='80' width='80' src="<?php echo $this->url->get('img/jn.png')?>">
+    <div class="nav navbar-nav-scroll" >
+        <button class="btn c" onclick="window.location = '/JobsNow/login'">Login</button>
+        <button class="btn" onclick="window.location = '/JobsNow/register'">Register</button>
+    </div>
+</nav>
+
+<div class="text-center">
+    <img class="animacion" height='50%' width='50%' src="<?php echo $this->url->get('img/logo.png')?>">
+</div>
+<div class='container description'>
+    Nuestro fin?  Acabar con el desempleo de la era macri. Con esta herramienta desarrollada 100% por argentinos, podras encontrar empleo en cuestion de horas, deja de preocuparte y registrate ya para conseguir un buen empleo.
+</div>
+
+<div class="experience">
+    <div class='user'>
+        <div class="row">
+            <div class="text-center col-sm-12 col-md-3">
+                <img width="150" height="150" class="rounded-circle" src="<?php echo $this->url->get('img/tori.jpg')?>"><br>
+                <q>Muy Buena la Página</q>
+            </div>
+            <div class="text-center col-sm-12 col-md-3">
+                <img width="150" height="150" class="rounded-circle" src="<?php echo $this->url->get('img/nhdb_profile.jpg')?>"><br>
+                <q>Muy Buena la Página</q>
+            </div>
+            <div class="col-sm-12 col-md-6">
+                <p class="usersp">
+                    Las experiencias de nuestros usuarios son excelentes e indican que en un periodo de 24 horas pueden encontrar trabajo.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8">
+                <img class="footerimg jobsnow" src="<?php echo $this->url->get('img/textlogo.png')?>"><br>
+            </div>
+            <div class="col-sm-4">
+                <h2>Nuestros datos:</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <img class="footerimg unlam" src="<?php echo $this->url->get('img/logo-unlam.png')?>">             
+            </div>
+            <div class="end col-sm-3 ">    
+                <div class="tori">
+                    <h5>Toripampa</h5>
+                    <ul>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="https://twitter.com/toripampa">Twitter</a></li>
+                        <li><a href="#">Bandcamp</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="end col-sm-3">
+                <div class="nhdb">
+                    <h5>Nhdb</h5>
+                    <ul>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="https://twitter.com/_NHDB">Twitter</a></li>
+                        <li><a href="#">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <p>
+                Proyecto de pasantias desarrollado en Phalcon, HTML, CSS y JavaScript.
+                Agradecimientos: Emanuel Carbone, Horacio Villarreal, Daniela Turello, Luca Salman y Barack Obama.
+            </p>
+        </div>
+    </div>
+</footer>

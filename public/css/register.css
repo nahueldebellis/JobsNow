@@ -1,0 +1,30 @@
+body{
+    background-color:#161D2A;
+}
+
+button {
+    color: beige;
+    background: none; 
+    margin-right: 5px;
+}
+
+form{
+    padding: 5%;
+    background-color: whitesmoke;
+}
+
+form input[type=submit]{
+    width: 100%;
+    background-color: #46669C;
+    border: none;
+}
+
+form label{
+    font-weight: 600;
+}
+
+h1{
+    font-family: 'Roboto', sans-serif;
+    color:white;
+    font-weight: 100;
+}

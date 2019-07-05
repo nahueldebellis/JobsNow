@@ -7,6 +7,8 @@
         }
         
         public function indexAction(){
+            $this->assets->addCss("css/main_template.css");
+            $this->assets->addCss("css/login.css");
             if($this->session->has("register")){
                 $this->view->disable();
                 $this->response->redirect('profile');

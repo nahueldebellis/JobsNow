@@ -1,11 +1,30 @@
-<?php
+<?php $this->assets->outputCss()?>
+<div class='row d-flex justify-content-center'>
+    <div class='col-sm-12 col-lg-8'>
+        <h1 class='ofertas'>Postulants</h1>
+    </div>
+</div>
+<div class='row d-flex justify-content-center'>
+    <?php
+        foreach($postulation as $postulants){
+            echo "<form action='/JobsNow/postulation/hire/' method='POST' class='border form-group col-sm-12 col-lg-8'>";
+            if(isset($postulants["employee_id"])){
+                $aux = $postulants['employee_id'];
+                echo "<input type='hidden' name='employee' readonly value='$aux'>";
+                echo "<input type='hidden' name='job' readonly value='$job'>";
+                continue;
+            }
 
-    foreach($postulation as $postulants){
-        foreach($postulants as $key => $value){
-            if($key != "profile_photo")
-                echo "$key -> $value ";
+            foreach($postulants as $key => $value){
+                
+                echo "<div class='form-group'>";
+                    echo "<label id='campo'>$key:</label> ";
+                    echo "<label id='value'>$value</label>";
+                echo "</div>";
+            }
+            echo "<input class='job_button btn btn-primary' type='submit' value='Accept employee'>";
+            echo "</form>";
         }
-        echo "<br>";
-    }
 
-?>
+    ?>
+</div>

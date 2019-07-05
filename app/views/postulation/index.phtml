@@ -1,17 +1,29 @@
 <?php
     $this->assets->outputCss();
+    echo "<div class='row d-flex justify-content-center'>";
+    echo "<div class='col-sm-12 col-lg-8'>";
+    echo "<h1 class='ofertas'>Ofertas</h1>";
+    if(!isset($create)){
+        echo "<a class='col-sm-2' href='/JobsNow/postulation/direct/'>Mis Ofertas</a>";
+    }
+    echo "</div>";
+    echo "</div>";
+    
     function showOffers($offer, $apply='', $url="/JobsNow/postulation/apply/"){
         if(isset($offer)){
-            echo "<div class='row'>";
+            echo "<div class='row d-flex justify-content-center'>";
+            
             foreach($offer as $off){ ?>
-                <form class="border form-group col-sm-2"  action=<?php echo $url ?> method='POST'>
+            
+                <form class="border form-group col-sm-12 col-lg-8"  action=<?php echo $url ?> method='POST'>
                     <?php
+                        echo "<h1 class='company-name'>".$off['company_name']."</h1>";
                         foreach($off as $campo => $value){
                             if($campo == 'requirements' || $campo == 'description'){
                                 echo "<label id='campo'>$campo:</label> ";
                                 echo "<label id='value'> $value </label><br>";
                             }
-                            else if($campo != "id"){
+                            else if($campo != "id" && $campo != "company_id" && $campo != "company_name"){
                                 echo "<label id='campo'>$campo:</label> ";
                                 echo "<label id='value'> $value </label><br>";
                             }
@@ -21,6 +33,7 @@
                         echo $apply;
                     ?>
                 </form>
+                    
                 <?php
             }
             echo "</div>";
@@ -29,22 +42,38 @@
 
     if(isset($create)){
         ?>
-        <h2>Create new Offer</h2>
-        <form action="<?php echo $create; ?>" method="post">
-            <input type="hidden" name="id" value="<?php echo $company_id ?>">
-            <input type="text" name="position" id="" placeholder="Position">
-            <input type="text" name="description" id="" placeholder="Description">
-            <input type="text" name="salary" id="" placeholder="Salary">
-            <input type="text" name="requirements" id="" placeholder="Requirements">
-            <input type="submit" value="Create">
-        </form>
+        <div class="row d-flex justify-content-center">
+            <form class="form-group col-sm-12 col-lg-8" action="<?php echo $create; ?>" method="post">
+                <h2>Create new Offer</h2>
+                <div class='form-group'>
+                    <input class="form-control" type="hidden" name="id" value="<?php echo $company_id ?>">
+                </div>
+                <div class='form-group'>
+                    <input class="form-control" type="text" name="position" id="" placeholder="Position" required="true">
+                </div>
+                <div class='form-group'>
+                    <input class="form-control" type="text" name="description" id="" placeholder="Description" required="true">
+                </div>
+                <div class='form-group'>
+                    <input class="form-control" type="text" name="salary" id="" placeholder="Salary" required="true">
+                </div>
+                <div class='form-group'>
+                    <input class="form-control" type="text" name="requirements" id="" placeholder="Requirements" required="true">
+                </div>
+                <div class='form-group'>
+                    <input class="form-control" type="text" name="postulant" placeholder="Optional: User email" required="true">
+                </div>
+                <input class='btn btn-primary' type="submit" value="Create">
+            </form>
+
+        </div>
         <?php
-        $apply = "<input type='submit' value='See postulants'>";
+        $apply = "<input class='job_button btn btn-primary' type='submit' value='See postulants'>";
         $url="/JobsNow/postulation/show/";
         showOffers($offer, $apply, $url);
     }
     else{
-        $apply = "<input class='btn btn-primary' type='submit' value='Apply'>";
+        $apply = "<input class='job_button btn btn-primary' type='submit' value='Apply'>";
         showOffers($offer, $apply);
     }
     

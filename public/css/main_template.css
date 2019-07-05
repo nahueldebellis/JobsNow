@@ -1,6 +1,22 @@
 img:hover{
     cursor:pointer;
 }
-.container{
-    margin-top:5%;
+button {
+    color: beige;
+    background: none; 
+    margin-right: 5px;
+}
+
+body{
+    background-color: whitesmoke;
+}
+
+img{
+    margin-left: 10px;
+}
+
+
+.navbar{
+    background-color: #1B2126;
+    margin-bottom:1%;
 }

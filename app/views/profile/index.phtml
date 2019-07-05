@@ -1,17 +1,28 @@
-<h1> <?php echo $info['name']; ?> </h1>
-
-<img class="img-responsive center-block" 
-     src="data:image/jpeg;base64,<?php echo $info['profile_photo']?>">
-<p>
-     <?php
-          if(isset($edit_data)){
-               echo "<a href=$edit_data>Update Data</a><br>";
-          }
-          foreach ($info as $campo => $value) {
-               if(($campo != "profile_photo") && ($campo != "cv")){
-                    echo "$campo -> $value<br>";
+<?php $this->assets->outputCss(); ?>
+<div class="row">
+     <div class="col-sm-12 col-md-3 col-lg-3 ">
+          <img class="profile-img avatar width-full height-full"  width="200" height="200" src="data:image/jpeg;base64,<?php echo $info['profile_photo']?>">
+     </div>
+     <div class="col-sm-12 col-md-7 col-lg-8 centro">
+          <h1 style="color:#46669c;" > <?php echo $info['name']; ?> </h1>
+          <h5 class='text-secondary'><?php echo $info['rotulo'] ?></h5>
+          <ul class="list">
+          <?php
+               if(isset($edit_data)){
+                    echo "<a href=$edit_data>Update Data</a><br>";
                }
-          } 
-     ?>
+               foreach ($info as $campo => $value) {
+                    echo "<div class=header>";
+                    if(($campo != "profile_photo") && ($campo != "user_id") && ($campo != "id") && ($campo != "cv")){
+                         echo "<li class='title'>$campo: </li>";
+                         echo "<li class='element'>$value</li>";
+                    }
+                    echo "</div>";
+               } 
+          ?>
+          </ul>
+     </div>
+</div>
+
+     
      <iframe id="pdf" src="" type="application/pdf" width="100%" height="100%" style="overflow: auto;"></iframe>
-</p>

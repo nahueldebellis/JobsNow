@@ -1,0 +1,27 @@
+body{
+    background-color: whitesmoke;
+}
+.profile-img{
+    margin-bottom: 3%;
+    margin-top: 10%;
+}
+h1{
+    font-size:65px;
+    font-weight: 600;
+}
+.centro{
+    margin:0 auto;
+}
+
+.list{
+    padding: 0;
+}
+.header li{
+    display:inline;
+}
+
+.title{
+    font-weight: 100;
+    text-transform: capitalize;
+}
+

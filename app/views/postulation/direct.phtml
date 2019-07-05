@@ -1,0 +1,23 @@
+<div class="row d-flex justify-content-center">
+    <div class="col-sm-12 col-lg-8">
+        <h1 class="ofertas">Mis Ofertas</h1>
+    </div>
+</div>
+<div class="row d-flex justify-content-center">
+        <?php 
+            $this->assets->outputCss();
+
+            foreach($postulations as $postulation){
+                echo'<form class="border form-group col-sm-12 col-lg-8">';
+                echo "<h1 class='company-name'>".$postulation['name']."</h1>";
+                foreach($postulation as $postulation_key => $postulation_value){
+                    if($postulation_key !== 'company_id' && $postulation_key !== 'name'){
+                        echo "<label id='campo'>$postulation_key:</label> ";
+                        echo "<label id='value'>$postulation_value</label><br>";
+                    }  
+                }
+                echo'<input class="job_button btn btn-primary" type="submit" value="Accept">';
+                echo "</form>";
+            }
+        ?>
+</div>

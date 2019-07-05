@@ -5,8 +5,11 @@
         public function initialize(){
             
         }
+        
         public function indexAction(){
             $this->assets->addJs('js/register.js');
+            $this->assets->addCss('css/main_template.css');
+            $this->assets->addCss('css/register.css');
         }
 
         public function registerAction(){

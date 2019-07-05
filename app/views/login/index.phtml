@@ -1,8 +1,29 @@
+<?php $this->assets->outputCss(); ?>
 
-    <form action="/JobsNow/login/login" method="post" >
-        <label for="">Email: </label><br>
-        <input type="text" name="email" id="" placeholder='Email'><br>
-        <label for="">Password: </label><br>
-        <input type="password" name="pass" placeholder='Password' id=""><br>
-        <input type="submit" value="submit">
-    </form>
+
+
+<div class="container cap" style="height: 100px;">
+    <div class="content">
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <img class="img-fluid" height='80' width='80' src="<?php echo $this->url->get('img/jn.png')?>" onclick='window.location="/JobsNow/"'>
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center">
+            <div class="col-sm-12 col-md-6 col-lg-4">
+                <h2>Login</h2>
+                <form class="rounded form-group" action="/JobsNow/login/login" method="post" >
+                    <div class="form-group">
+                        <label for="">Email </label><br>
+                        <input class="form-control" type="text" name="email" id="" placeholder='Email'>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Password </label><br>
+                        <input class="form-control" type="password" name="pass" placeholder='Password' id="">
+                    </div>
+                    <input class="btn btn-primary" type="submit" value="Login">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
