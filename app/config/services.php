@@ -101,6 +101,7 @@ $di->set('flash', function () {
     ]);
 });
 
+
 /**
  * Start the session the first time some component request the session service
  */

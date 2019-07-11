@@ -29,7 +29,8 @@
                 $this->view->disable();
             }
             else{
-                echo 'User not exist';
+                $this->flashSession->error("Error or user inccorrect");
+                $this->response->redirect('login/index');
             }
         }
     }
