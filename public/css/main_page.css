@@ -22,6 +22,16 @@ body{
     margin-top:5%;
     color:white;
 }
+.torip:hover, .nhdbp:hover{
+    -webkit-animation:spin 4s linear infinite;
+    -moz-animation:spin 4s linear infinite;
+    animation:spin 4s linear infinite;
+}
+
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
 
 .experience{
     position: relative;
@@ -46,9 +56,8 @@ body{
     filter: contrast(100%) brightness(1);
     transition: 1s;
     filter: saturate(0%)   brightness(1.4);
-  
-    
 }
+
 
 
 q{
