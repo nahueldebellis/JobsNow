@@ -60,7 +60,7 @@
             $postulation_number = 0;
             
             $job_postulant = Job::find([
-                'columns' => ['position', 'description', 'requirements', 'salary', 'company_id', 'employee_id'],
+                'columns' => ['id', 'position', 'description', 'requirements', 'salary', 'company_id', 'employee_id'],
                 "employee_id=$employee->id"
             ]);
 
@@ -93,7 +93,25 @@
 
             $job->employee_id = $employee;
             $job->update();
+            $this->response->redirect('postulation');
+            return;
+        }
 
+        public function acceptAction(){
+            if($this->session->has("register"))
+                $user_id = $this->session->get("register");
+            else{
+                $this->response->redirect('login');
+                return;
+            }
+
+            $job_id = $this->request->getPost('id');
+            $job = Job::findFirstById($job_id);
+            $job->state = 'Unactive';
+            $job->update();
+            
+            $this->response->redirect('direct');
+            return;
         }
 
         public function applyAction(){ // apply to one job and create postulation
@@ -139,11 +157,18 @@
                 $this->response->redirect('login');
                 return;
             }
-
             $job_id = $this->request->getPost('id');//aca esta el trabajo
-            $job_postulations = Postulations::find([
-                'conditions' => "job_id = $job_id"
-            ]);
+            $job_active = Job::findFirst("id=$job_id");
+            if($job_active->state == 'Active'){
+                $job_postulations = Postulations::find([
+                    'conditions' => "job_id = $job_id"
+                ]);
+            }
+            else{
+                $job_postulations[0]->employee_id = $job_active->employee_id;
+                $this->view->official = true;
+            }
+            
 
             $postulants = [];
             foreach($job_postulations as $job){
