@@ -8,10 +8,11 @@
             $this->assets->outputCss();
 
             foreach($postulations as $postulation){
-                echo'<form class="border form-group col-sm-12 col-lg-8">';
+                echo'<form action="/jobsnow/postulation/accept" method="POST" class="border form-group col-sm-12 col-lg-8">';
                 echo "<h1 class='company-name'>".$postulation['name']."</h1>";
+                echo "<input type='hidden' name='id' value=".$postulation['id'].">";
                 foreach($postulation as $postulation_key => $postulation_value){
-                    if($postulation_key !== 'company_id' && $postulation_key !== 'name'){
+                    if($postulation_key !== 'company_id' && $postulation_key !== 'name' && $postulation_key !== 'id'){
                         echo "<label id='campo'>$postulation_key:</label> ";
                         echo "<label id='value'>$postulation_value</label><br>";
                     }  

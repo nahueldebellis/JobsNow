@@ -22,7 +22,8 @@
                     echo "<label id='value'>$value</label>";
                 echo "</div>";
             }
-            echo "<input class='job_button btn btn-primary' type='submit' value='Accept employee'>";
+            if(!isset($official))
+                echo "<input class='job_button btn btn-primary' type='submit' value='Accept employee'>";
             echo "</form>";
         }
 
