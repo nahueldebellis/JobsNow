@@ -29,7 +29,7 @@
                 $this->view->disable();
             }
             else{
-                $this->flashSession->error("Error or user inccorrect");
+                $this->flashSession->error("User or password inccorrect");
                 $this->response->redirect('login/index');
             }
         }
