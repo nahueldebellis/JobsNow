@@ -20,3 +20,7 @@ img{
     background-color: #1B2126;
     margin-bottom:1%;
 }
+
+#partial_result a{
+    display: block;
+}
