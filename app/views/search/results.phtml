@@ -1,20 +1,30 @@
-<div class="row">
+
 <?php 
     $this->assets->outputCss();
+?>
+<div class="row">
+    <h1>Results</h1>
+</div>
+<div class="row">
+<?php
+
     foreach($search_results as $search_result){ ?>
         
-        <form class = 'border form-group col-sm-12 col-lg-3'>
-        <div>
-            
-            <?php 
-            echo "<a href='/jobsnow/profile/general?id=".$search_result['id']."'><h3>".$search_result['name']."</h3></a>";
-            foreach($search_result as $campo => $value) {
-                echo "<label>$campo:</label> ";
-                echo "<label>$value</label><br>";   
-            }
-            ?>
-        </div>
-    </form>
+        <form class = 'userdata border form-group col-sm-12 col-md-6 col-lg-4'>
+            <div class="row">
+                <div class="photo_profile">
+                    <?php 
+                        echo "<img class='thumbnail rounded-circle' src='data:image/jpeg;base64,".$search_result['profile_photo']."'>";
+                    ?>
+                </div>
+                <div class="bio">
+                    <?php
+                        echo "<a class='name' href='/jobsnow/profile/general?id=".$search_result['id']."'><h3 class='campo'>".$search_result['name']."</h3></a>";
+                        echo "<p class='rotulo'>".$search_result['rotulo']."</p>";
+                    ?>
+                </div>
+            </div>
+        </form>
     <?php
     }
 ?>

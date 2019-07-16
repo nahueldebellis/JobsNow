@@ -2,6 +2,9 @@
 use Phalcon\Mvc\Controller;
 
 class SearchController extends Controller{
+    public function initialize(){
+        $this->assets->addJs('js/search.js');
+    }
     public function indexAction(){
         $search_query = $this->request->getJsonRawBody();
         $search_query = $search_query->search;
@@ -24,7 +27,7 @@ class SearchController extends Controller{
 
     private function getSearchData($search_query){
         $search_result = Users::find([
-            "columns" => 'id, name, rotulo, email, phone, address',
+            "columns" => 'id, name, rotulo, profile_photo',
             "conditions" => "rotulo LIKE '%$search_query%' OR name LIKE '%$search_query%' OR email LIKE '%$search_query%'"
         ]);
         $out = [];
