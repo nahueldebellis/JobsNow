@@ -111,7 +111,7 @@
             $job->state = 'Unactive';
             $job->update();
             
-            $this->response->redirect('direct');
+            $this->response->redirect('postulation/direct');
             return;
         }
 

@@ -3,7 +3,7 @@
     $this->assets->outputJs();
 ?>
 
-<form class="form-group" action='/JobsNow/profile/edit' method='POST'>
+<form class="form-group" action='/JobsNow/profile/edit' enctype="multipart/form-data" method='POST'>
   
     <?php
         foreach($user_info as $change_field => $old_data){
@@ -21,7 +21,7 @@
 
     <div class="form-group">
         <label>Profile Photo: </label>
-        <input class="form-control-file" type="file" name="profile_photo" placeholder = "Name">
+        <input class="form-control-file" type="file" name="profile_photo">
     </div>
     <?php 
         foreach($aditional_info as $input_name => $input_type){

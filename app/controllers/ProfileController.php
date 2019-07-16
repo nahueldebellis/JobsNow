@@ -31,9 +31,17 @@
 
         public function generalAction(){
             $this->assets->addCss("css/profile.css");
+            $user_actual = $this->checkRegister();
             $user_id = $this->request->getQuery('id');
-            $info = $this->getProfileData($user_id);
-            $this->view->info = $info;
+            if($user_actual !== $user_id){
+                $info = $this->getProfileData($user_id);
+                $this->view->info = $info;
+            }
+            else{
+                $this->view->disable();
+                $this->response->redirect('profile');
+                return;
+            }
         }
 
         public function updateAction(){
@@ -61,7 +69,7 @@
             $user_id = $this->checkRegister();
             $employee = ['cv', 'experience', 'education'];
             $company = ['nif', 'area'];
-            $user = ['name', 'email', 'phone', 'address', 'rotulo', 'profile_photo'];
+            $user = ['name', 'email', 'phone', 'address', 'rotulo'];
 
             $req = $this->request->getPost();//getRawBody(): 
 
@@ -78,6 +86,13 @@
                     elseif(in_array($edit_type, $company))
                         $this->updateCompany($user_id, $edit_type, $edit_data);
                 }
+
+                if($this->request->getUploadedFiles()[0] !== Null){
+                    $user = Users::findFirstById($user_id);
+                    $user->profile_photo = base64_encode(file_get_contents($this->request->getUploadedFiles()[0]->getTempName()));
+                    $user->update();
+                }
+                
             }
 
             $this->response->redirect('profile');
@@ -115,6 +130,7 @@
             $info = [
                 'id' => $user_info->id,
                 'name' => $user_info->name,
+                'rating' => $user_info->rating,
                 'email'=> $user_info->email,
                 'phone'=> $user_info->phone,
                 'address'=> $user_info->address,
