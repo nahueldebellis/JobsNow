@@ -4,6 +4,7 @@
     class Users extends Model{
         public $id;
         public $name;
+        public $rating;
         public $email;
         public $phone;
         public $address;

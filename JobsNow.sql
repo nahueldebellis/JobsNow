@@ -1,6 +1,7 @@
 CREATE TABLE Users(
 	id int not null auto_increment,
     name varchar(50),
+    rating float default 0.1,
     email varchar(100),
     phone int,
     pass varchar(120),
