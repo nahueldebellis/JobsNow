@@ -1,0 +1,32 @@
+body{
+    font-family: 'Roboto';
+}
+h1{
+    font-weight: 100;
+}
+.campo{
+    text-transform: capitalize;
+    color: #005fbe ;
+}
+.thumbnail{
+    height: 60px;
+    width:60px;
+    padding: 2%;
+}
+.rotulo{
+    margin: 0;
+    text-transform: capitalize;
+}
+
+.photo_profile{
+    margin-right: 2%;
+}
+
+.name h3{
+    margin:0;
+}
+.userdata{
+    padding: 1%;
+    margin-right: 0%;
+    background-color:#f8f9fa;
+}
