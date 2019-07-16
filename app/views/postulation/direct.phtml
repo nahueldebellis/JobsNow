@@ -6,9 +6,10 @@
 <div class="row d-flex justify-content-center">
         <?php 
             $this->assets->outputCss();
+            $this->assets->outputJs();
 
             foreach($postulations as $postulation){
-                echo'<form action="/jobsnow/postulation/accept" method="POST" class="border form-group col-sm-12 col-lg-8">';
+                echo'<form action="/jobsnow/postulation/accept" method="POST" class="formulario border form-group col-sm-12 col-lg-8">';
                 echo "<h1 class='company-name'>".$postulation['name']."</h1>";
                 echo "<input type='hidden' name='id' value=".$postulation['id'].">";
                 foreach($postulation as $postulation_key => $postulation_value){

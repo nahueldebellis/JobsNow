@@ -4,6 +4,7 @@
     class EmployeeController extends Controller{
         public function initialize(){
             $this->assets->addCss('css/main_template.css');
+            $this->assets->addJs('js/search.js');
             $this->view->setTemplateBefore('main_template');
         }
         

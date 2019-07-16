@@ -1,67 +1,32 @@
-<?php $this->assets->outputCss(); ?>
+<?php 
+    $this->assets->outputCss(); 
+    $this->assets->outputJs();
+?>
 <header class="navbar navbar-dark flex-row bd-navbar sticky-top">
-        <img class="img-fluid " alt="Responsive image" height='80' width='80' src="<?php echo $this->url->get('img/jn.png')?>" onclick="window.location = '/JobsNow/profile/'">
-        <ul class="nav navbar-nav-scroll ">
-            <li class='nav_item '>
-                <div class="md-form active-purple active-purple-2">
-                    <form action='/jobsnow/search/results' method='POST'>
-                        <div class='dropdown'>
-                            <input id="search" class="form-control" name="search" type="text" placeholder="Buscar" autocomplete="off">
-                            <div id='menu' class="dropdown-menu">
-                                <div id="partial_result">
-                                </div>
-                            </div> 
-                        </div>
-                    </form>
-                </div>
-            </li>
-            <li class="nav-item active">
-                <button class="btn" onclick="window.location='/jobsnow/Profile/Close'">Close Session</a> 
-            </li>
-            <li class="nav-item active">
-                <button class="btn c" onclick="window.location='/jobsnow/Postulation/'">Ofertas</a> 
-            </li>   
-        </ul>
-
+    <img class="img-fluid" alt="Responsive image" height='80' width='80' src="<?php echo $this->url->get('img/jn.png')?>" onclick="window.location = '/JobsNow/profile/'">
+    <ul class="nav navbar-nav-scroll ">
+        <li class='nav_item'>
+            <div class="md-form active-purple active-purple-2">
+                <form action='/jobsnow/search/results' method='POST'>
+                    <div class='dropdown'>
+                        <input id="search" class="form-control" name="search" type="text" placeholder="Buscar" autocomplete="off">
+                        <div id='menu' class="dropdown-menu">
+                            <div id="partial_result">
+                            </div>
+                        </div> 
+                    </div>
+                </form>
+            </div>
+        </li>
+        <li class="nav-item active">
+            <button class="btn" onclick="window.location='/jobsnow/Profile/Close'">Close Session</a> 
+        </li>
+        <li class="nav-item active">
+            <button class="btn c" onclick="window.location='/jobsnow/Postulation/'">Ofertas</a> 
+        </li>   
+    </ul>
 </header>
 
 <div class='container'>
     <?php echo $this->getContent(); ?>
 </div>
-
-<script>
-    (()=>{
-        let search = document.getElementById('search');
-        let input_search = [];
-        search.addEventListener('keyup', function (){
-            input_search = {search: search.value};
-            fetch('/JobsNow/Search', {
-                method: 'POST', 
-                body: JSON.stringify(input_search), 
-                headers:{'Content-Type': 'application/json'}
-            })
-            .then(responseJson => responseJson.json()).then(res => renderPartialResult(res));
-        });
-    })();
-
-    function renderPartialResult(search_results){
-        let div_father = document.getElementById('partial_result');
-
-        while (div_father.firstChild) {
-            div_father.removeChild(div_father.firstChild);
-        }
-
-        document.getElementById('menu').style.display = "inline";
-        for(let search_result in search_results){
-                let label_id = search_results[search_result]['id'];
-                let label = search_results[search_result]['name'];
-
-                let a_tag_result = document.createElement("a");
-                a_tag_result.innerHTML = label;
-                a_tag_result.className = 'dropdown-item';
-                a_tag_result.href = '/jobsnow/profile/general?id='+label_id;
-                div_father.insertBefore(a_tag_result, undefined);
-            
-        }
-    }
-</script>

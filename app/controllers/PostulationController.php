@@ -3,8 +3,9 @@
     class PostulationController extends Controller{
         public function initialize(){
             $this->assets->addCss('css/main_template.css');
-            $this->view->setTemplateBefore('main_template');
             $this->assets->addCss("css/postulation.css");
+            $this->assets->addJs('js/search.js');
+            $this->view->setTemplateBefore('main_template');
         }
 
         public function indexAction(){ //show available jobs

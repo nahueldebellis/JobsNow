@@ -1,5 +1,6 @@
 <?php
     $this->assets->outputCss();
+    $this->assets->outputJs();
     echo "<div class='row d-flex justify-content-center'>";
     echo "<div class='col-sm-12 col-lg-8'>";
     echo "<h1 class='ofertas'>Ofertas</h1>";
@@ -15,7 +16,7 @@
             
             foreach($offer as $off){ ?>
             
-                <form class="border form-group col-sm-12 col-lg-8"  action=<?php echo $url ?> method='POST'>
+                <form class="formulario border form-group col-sm-12 col-lg-8"  action=<?php echo $url ?> method='POST'>
                     <?php
                         echo "<h1 class='company-name'>".$off['company_name']."</h1>";
                         foreach($off as $campo => $value){
