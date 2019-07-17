@@ -27,8 +27,9 @@ class SearchController extends Controller{
 
     private function getSearchData($search_query){
         $search_result = Users::find([
-            "columns" => 'id, name, rotulo, profile_photo',
-            "conditions" => "rotulo LIKE '%$search_query%' OR name LIKE '%$search_query%' OR email LIKE '%$search_query%'"
+            "columns" => 'id, name, rotulo, profile_photo, rating',
+            "conditions" => "rotulo LIKE '%$search_query%' OR name LIKE '%$search_query%' OR email LIKE '%$search_query%'",
+            "order" => "rating DESC",
         ]);
         $out = [];
         foreach($search_result as $user){
