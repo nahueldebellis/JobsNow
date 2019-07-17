@@ -71,9 +71,22 @@
             $company = ['nif', 'area'];
             $user = ['name', 'email', 'phone', 'address', 'rotulo'];
 
-            $req = $this->request->getPost();//getRawBody(): 
-
+            $req = $this->request->getPost();//getRawBody();
+            $files = $this->request->getUploadedFiles();
+            
+            if($files[0]->getName() !== ""){
+                $user_model = Users::findFirstById($user_id);
+                $user_model->profile_photo = base64_encode(file_get_contents($files[0]->getTempName()));
+                $user_model->update();         
+            }
+            if(isset($files[1]) && $files[1]->getName() !== ""){
+                $employee_model = Employee::findFirst("user_id=$user_id");
+                $employee_model->cv = base64_encode(file_get_contents($files[1]->getTempName()));
+                $employee_model->update();         
+            }
+            
             foreach($req as $edit_type => $edit_data){
+                echo "$edit_type-> $edit_data <br>";
                 if($edit_data != Null || $edit_data != ''){
                     if($edit_type == 'pass'){
                         $edit_data = md5($edit_data);
@@ -86,13 +99,6 @@
                     elseif(in_array($edit_type, $company))
                         $this->updateCompany($user_id, $edit_type, $edit_data);
                 }
-
-                if($this->request->getUploadedFiles()[0] !== Null){
-                    $user = Users::findFirstById($user_id);
-                    $user->profile_photo = base64_encode(file_get_contents($this->request->getUploadedFiles()[0]->getTempName()));
-                    $user->update();
-                }
-                
             }
 
             $this->response->redirect('profile');
