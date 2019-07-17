@@ -13,10 +13,11 @@
           </a>
           <h5 class='text-secondary'><?php echo $info['rotulo'] ?></h5>
           <ul class="list">
-          <?php               
+          <?php     
+               $not_values = ["profile_photo", "user_id", "id", "cv", "rating", "name", "rotulo"];
                foreach ($info as $campo => $value) {
                     echo "<div class=header>";
-                    if(($campo != "profile_photo") && ($campo != "user_id") && ($campo != "id") && ($campo != "cv") && ($campo != "rating")){
+                    if(!in_array($campo, $not_values)){
                          echo "<li class='title'>$campo: </li>";
                          echo "<li class='element'>$value</li>";
                     }

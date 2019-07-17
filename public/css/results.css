@@ -4,6 +4,18 @@ body{
 h1{
     font-weight: 100;
 }
+.name, .rating{
+    display: inline-block;
+}
+.rating{
+    position: absolute;
+    right: 1%;
+}
+.fa-star{
+
+    color:#cca90c;
+}
+
 .campo{
     text-transform: capitalize;
     color: #005fbe ;

@@ -10,7 +10,7 @@
 
     foreach($search_results as $search_result){ ?>
         
-        <form class = 'userdata border form-group col-sm-12 col-md-6 col-lg-4'>
+        <form class = 'userdata border form-group col-sm-12 '>
             <div class="row">
                 <div class="photo_profile">
                     <?php 
@@ -20,6 +20,7 @@
                 <div class="bio">
                     <?php
                         echo "<a class='name' href='/jobsnow/profile/general?id=".$search_result['id']."'><h3 class='campo'>".$search_result['name']."</h3></a>";
+                        echo "<div class='rating'>".$search_result['rating']." <span class='fas fa-star'></span></div>";
                         echo "<p class='rotulo'>".$search_result['rotulo']."</p>";
                     ?>
                 </div>
