@@ -156,20 +156,27 @@
         }
 
         public function cvAction(){
-            $user_id = $this->request->getQuery('user_id');
+            $user_id = $this->request->getQuery('id');
             $employee_info = Employee::findFirst([
-                "user_id = $user_id",
+                "id = $user_id",
             ]);
+            
+            $data = base64_decode($employee_info->cv);
 
-           
-            $data = base64_encode($employee_info->cv);
+            $file = 'files/curriculum.pdf';
+            file_put_contents($file, $data);
 
-            $this->response->setHeader('Content-Type', 'application/pdf');
-            $this->response->setHeader('Content-Disposition', 'filename="filename.pdf"');
-            $this->response->setHeader('Content-Transfer-Encoding', 'binary');
-            $this->response->setHeader('Accept-Ranges', 'bytes');
-            $this->response->setContent($data);
-            $this->response->send();
+            if (file_exists($file)) {
+                header('Content-Description: File Transfer');
+                header('Content-Type: application/octet-stream');
+                header('Content-Disposition: attachment; filename="'.basename($file).'"');
+                header('Expires: 0');
+                header('Cache-Control: must-revalidate');
+                header('Pragma: public');
+                header('Content-Length: ' . filesize($file));
+                readfile($file);
+                exit;       
+            }
         }
 
     }
