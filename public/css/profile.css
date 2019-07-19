@@ -18,6 +18,9 @@ body{
 @-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
 @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
 
+.curriculum{
+    margin-right:1%;
+}
 h1{
     font-size:65px;
     font-weight: 600;

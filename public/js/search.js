@@ -23,6 +23,7 @@ function renderPartialResult(search_results){
     for(let search_result in search_results){
             let label_id = search_results[search_result]['id'];
             let label = search_results[search_result]['name'];
+            
 
             let a_tag_result = document.createElement("a");
             a_tag_result.innerHTML = label;
