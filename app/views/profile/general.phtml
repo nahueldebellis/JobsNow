@@ -13,6 +13,7 @@
           </a>
           <h5 class='text-secondary'><?php echo $info['rotulo'] ?></h5>
           <ul class="list">
+          <a class="curriculum" href="/JobsNow/profile/cv?id=<?php echo $info['id'] ?>">Curriculum Vitae </a>
           <?php     
                $not_values = ["profile_photo", "user_id", "id", "cv", "rating", "name", "rotulo"];
                foreach ($info as $campo => $value) {

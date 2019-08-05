@@ -39,7 +39,7 @@
                 $this->createCompany($user->id);
 
             $this->success_status($success, 'Users');  
-             
+            $this->response->redirect('/');
         }
 
         public function companyAction(){
