@@ -1,20 +1,23 @@
 <?php $this->assets->outputCss(); ?> 
 <nav class="navbar   sticky-top">
+    <div class="innernav col-sm-10 row ">
     <img class="img-fluid " alt="Responsive image" height='80' width='80' src="<?php echo $this->url->get('img/jn.png')?>">
     <div class="nav navbar-nav-scroll" >
         <button class="btn c" onclick="window.location = '/JobsNow/login'">Login</button>
         <button class="btn" onclick="window.location = '/JobsNow/register'">Register</button>
     </div>
+</div>
 </nav>
-
+<section>
 <div class="text-center">
     <img class="animacion" height='50%' width='50%' src="<?php echo $this->url->get('img/logo.png')?>">
 </div>
 <div class='container description'>
     Nuestro fin?  Acabar con el desempleo de la era macri. Con esta herramienta desarrollada 100% por argentinos, podras encontrar empleo en cuestion de horas, deja de preocuparte y registrate ya para conseguir un buen empleo.
 </div>
-
-<div class="experience">
+</section>
+<section>
+<div data-aos="fade-left" data-aos-duration="1000" class="experience">
     <div class='user'>
         <div class="row">
             <div class="text-center col-sm-12 col-md-3">
@@ -33,6 +36,7 @@
         </div>
     </div>
 </div>
+</section>
 <footer>
     <div class="container">
         <div class="row">
@@ -74,3 +78,7 @@
         </div>
     </div>
 </footer>
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>

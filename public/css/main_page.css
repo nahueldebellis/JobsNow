@@ -1,7 +1,12 @@
 button {
     color: beige;
     background: none; 
-    margin-right: 5px;
+    
+}
+.innernav {
+    margin: auto;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .logo{
@@ -9,11 +14,13 @@ button {
 }
 nav{
     border: none;
-    background-color: #1B2126;
+    background-color: rgb(4, 15, 24);
+    align-items: center;
     
 }
 body{
-    background-color: #161D2A;
+    background-color: #1B2126;
+  
 }
 
 .description{
@@ -37,7 +44,7 @@ body{
     position: relative;
     left:10%;
     width:90%;
-    background-color: #46669C;
+    background-color: rgb(46, 94, 175);
     /*height: 210px; putooooo*/
     margin-top: 5%; 
     margin-bottom: 5%;
@@ -107,7 +114,7 @@ footer ul li{
 
 footer{
     position: relative;
-    background-color:/*#5E7184;#4B5C78;*/#B7C7DE;
+    background-color:/*#5E7184;#4B5C78;*/rgb(149, 175, 211);
 }
 .footerimg{
     height: 35%;

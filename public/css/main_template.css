@@ -1,10 +1,15 @@
+
 img:hover{
     cursor:pointer;
 }
 button {
-    color: beige;
+    color: rgb(224, 224, 224);
     background: none; 
-    margin-right: 5px;
+    margin-left: 4px;
+}
+.btn{
+
+    font-size: 13px;
 }
 
 body{
@@ -23,4 +28,34 @@ img{
 
 #partial_result a{
     display: block;
+}
+
+.searchinput 
+{
+    background-color: #20272c;
+    color: #ffffff;
+    border: none;
+    
+    
+}
+.navsearch{
+     background-color: #20272c;
+    border-radius: 21px;
+    border: 1px solid #464c50;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    color: #ffffff;
+    display: block;
+    font-size: 12px;
+    line-height: 14px; 
+    padding: 8px 12px 8px 12px;
+    transition: all .2s ease-in-out;
+    width: 100%;
+
+}
+
+.innernav {
+    margin: auto;
+    align-items: center;
+    justify-content: space-between;
 }

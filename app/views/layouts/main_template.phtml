@@ -3,14 +3,15 @@
     $this->assets->outputJs();
 ?>
 <header class="navbar navbar-dark flex-row bd-navbar sticky-top">
-    <img class="img-fluid" alt="Responsive image" height='80' width='80' src="<?php echo $this->url->get('img/jn.png')?>" onclick="window.location = '/JobsNow/profile/'">
+    <div class="innernav col-sm-11 row"><img class="img-fluid" alt="Responsive image" height='60' width='60' src="<?php echo $this->url->get('img/jn.png')?>" onclick="window.location = '/JobsNow/profile/'">
     <ul class="nav navbar-nav-scroll ">
         <li class='nav_item'>
             <div class="md-form active-purple active-purple-2">
                 <form action='/jobsnow/search/results' method='POST'>
-                    <div class='dropdown'>
-                        <input id="search" class="form-control" name="search" type="text" placeholder="Buscar" autocomplete="off">
-                        <div id='menu' class="dropdown-menu">
+                    <div class='dropdown navsearch'>
+                    <input id="search" class="searchinput" name="search" type="text" placeholder="Buscar" autocomplete="off">
+                    <span class="fa fa-search text-secondary"></span>    
+                    <div id='menu' class="dropdown-menu">
                             <div id="partial_result">
                             </div>
                         </div> 
@@ -25,6 +26,7 @@
             <button class="btn c" onclick="window.location='/jobsnow/Postulation/'">Ofertas</a> 
         </li>   
     </ul>
+    </div>
 </header>
 
 <div class='container'>
